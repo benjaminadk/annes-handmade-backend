@@ -4,6 +4,7 @@
   "description": "Anne's Handmade e-commerce application.",
   "main": "src/index.js",
   "scripts": {
+    "test": "echo hello",
     "dev": "cross-env NODE_ENV=development nodemon -e js,graphql -x node --inspect src/index.js",
     "deploy": "prisma deploy -e .env",
     "reset": "prisma reset",
@@ -19,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/benjaminadk/annes-handmade-prisma.git"
+    "url": "https://github.com/benjaminadk/annes-handmade-backend.git"
   },
   "engines": {
     "node": "10.13.0",
