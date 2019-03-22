@@ -1,0 +1,91 @@
+type User {
+  id: ID! @unique
+  name: String!
+  password: String
+  email: String! @unique
+  googleId: String @unique
+  image: String
+  role: Role
+  resetToken: String
+  resetTokenExpiry: Float
+  cart: [CartItem!]!
+  orders: [Order]
+  createdAt: DateTime!
+}
+
+type Product {
+  id: ID! @unique
+  variant: JewelryType!
+  bead: BeadType!
+  title: String!
+  description: String!
+  images: [String!]!
+  price: Int!
+  sold: Boolean! @default(value: "false")
+  createdAt: DateTime!
+}
+
+type CartItem {
+  id: ID! @unique
+  product: Product
+  user: User!
+}
+
+type OrderItem {
+  id: ID! @unique
+  title: String!
+  description: String!
+  images: [String!]!
+  price: Int!
+  variant: JewelryType!
+  bead: BeadType!
+  user: User
+}
+
+type Order {
+  id: ID! @unique
+  charge: String!
+  total: Int!
+  shipping: Address!
+  shipped: Boolean! @default(value: "false")
+  items: [OrderItem!]!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Address {
+  id: ID! @unique
+  name: String!
+  street: String!
+  city: String!
+  state: String!
+  zip: String!
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum JewelryType {
+  NECKLACE
+  BRACELET
+  EARRINGS
+}
+
+enum BeadType {
+  RED_JASPER
+  FANCY_JASPER
+  MUSTANG_JASPER
+  LEOPARD_JASPER
+  AVENTURINE
+  CARNELIAN
+  SAGUARO_JASPER
+  BLACK_ONYX
+  AMETHYST
+  ROSE_QUARTZ
+  CHALK_TURQUOISE
+  SWAROVSKI
+  YELLOW_JADE
+}

@@ -1,0 +1,116 @@
+# import * from './generated/prisma.graphql'
+
+type Query {
+  me: User
+  user(id: ID!): User
+  users: [User!]
+  product(id: ID!): Product
+  products(
+    where: ProductWhereInput
+    orderBy: ProductOrderByInput
+    skip: Int
+    first: Int
+  ): [Product]!
+  productsCount(where: ProductWhereInput): Count
+  orders(orderBy: OrderOrderByInput): [Order]!
+  order(id: ID!): Order
+  sales: [Order]!
+}
+
+type Mutation {
+  signup(name: String!, email: String!, password: String): User
+  googleSignup(data: UserCreateInput): User
+  signin(email: String!, password: String): User
+  signout: Payload
+  requestReset(email: String!): Payload
+  resetPassword(resetToken: String!, password: String!, confirmPassword: String!, pwd: Int): User
+  updateUser(id: ID!, data: UserUpdateInput!): User
+  createProduct(data: ProductCreateInput!): Product
+  updateProduct(id: ID!, data: ProductUpdateInput!): Product
+  deleteProduct(id: ID!): Product
+  addImage(id: ID, filename: String!, filetype: String!): S3Payload
+  deleteImage(id: ID, url: String!): Payload
+  addImageUser(id: ID!, filename: String!, filetype: String!): S3Payload
+  deleteImageUser(id: ID!, url: String!): Payload
+  addToCart(id: ID!): CartItem
+  removeFromCart(id: ID!): CartItem
+  createOrder(token: String!, data: AddressCreateInput!): Order
+  toggleShipped(id: ID!, shipped: Boolean!): Payload
+}
+
+type Payload {
+  success: Boolean
+  message: String
+}
+
+type S3Payload {
+  url: String
+  image: String
+}
+
+type User {
+  id: ID!
+  name: String!
+  password: String
+  email: String!
+  googleId: String
+  image: String
+  createdAt: DateTime
+  role: Role
+  cart: [CartItem!]
+  orders: [Order]
+}
+
+type Product {
+  id: ID!
+  variant: JewelryType!
+  bead: BeadType!
+  title: String!
+  description: String!
+  images: [String]
+  price: Int
+  sold: Boolean
+  createdAt: DateTime
+}
+
+type CartItem {
+  id: ID!
+  product: Product
+  user: User!
+}
+
+type OrderItem {
+  id: ID!
+  title: String!
+  description: String!
+  images: [String!]!
+  price: Int!
+  variant: JewelryType!
+  bead: BeadType!
+  user: User
+}
+
+type Order {
+  id: ID!
+  charge: String!
+  total: Int!
+  shipping: Address!
+  shipped: Boolean!
+  items: [OrderItem!]!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Address {
+  id: ID!
+  name: String!
+  street: String!
+  city: String!
+  state: String!
+  zip: String!
+}
+
+type Count {
+  count: Int
+}

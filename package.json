@@ -1,0 +1,51 @@
+{
+  "name": "annes-handmade-backend",
+  "version": "1.0.0",
+  "description": "Anne's Handmade e-commerce application.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon -e js,graphql -x node --inspect src/index.js",
+    "deploy": "prisma deploy -e .env",
+    "reset": "prisma reset",
+    "seed": "node database/seed",
+    "data": "npm run reset && npm run seed",
+    "start": "nodemon -e js,graphql -x node src/index.js"
+  },
+  "keywords": [],
+  "author": {
+    "name": "benjaminadk",
+    "email": "benjaminadk@gmail.com",
+    "url": "https://github.com/benjaminadk"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/benjaminadk/annes-handmade-prisma.git"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.1.0"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "2.2.6",
+    "aws-sdk": "2.368.0",
+    "axios": "0.18.0",
+    "bcryptjs": "2.4.3",
+    "cookie-parser": "1.4.3",
+    "cross-env": "5.2.0",
+    "csv-parse": "4.0.1",
+    "dotenv": "6.1.0",
+    "express": "4.16.4",
+    "googleapis": "27.0.0",
+    "graphql-import": "0.7.1",
+    "graphql-resolvers": "0.2.2",
+    "jsonwebtoken": "8.4.0",
+    "mjml": "4.2.1",
+    "nodemailer": "4.7.0",
+    "nodemailer-sendgrid-transport": "0.2.0",
+    "nodemon": "1.18.6",
+    "prisma-client-lib": "1.21.0",
+    "stripe": "6.17.0",
+    "twilio": "3.25.0"
+  }
+}
