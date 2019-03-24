@@ -33,6 +33,6 @@ module.exports = (mode, args) => {
     if (!args.price) throw new Error('price is required')
     if (!args.variant) throw new Error('variant is required')
     if (!args.bead) throw new Error('bead is required')
-    if (!args.set || !args.set.images.length) throw new Error('image is required')
+    if (!args.images || !args.images.set.length) throw new Error('image is required')
   }
 }
