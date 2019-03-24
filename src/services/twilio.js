@@ -1,5 +1,5 @@
 const client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH)
-const { formatMoney } = require('../resolvers/utils/formatMoney')
+const formatMoney = require('../resolvers/utils/formatMoney')
 
 // send sms text message to admin cell phone when order is placed
 module.exports = async total => {

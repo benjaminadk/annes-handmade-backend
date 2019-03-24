@@ -1,22 +1,21 @@
 const mjml2html = require('mjml')
 const { HEAD, HEADER, FOOTER } = require('./partials')
 const makeLink = require('./makeLink')
-const { formatMoney } = require('../../resolvers/utils/formatMoney')
+const formatMoney = require('../../resolvers/utils/formatMoney')
 
 // Generate table based on purchase
 function makeTable(products) {
-  const tables = products.map(
-    (product, i) =>
-      `<tr style="${
-        i === products.length - 1 ? 'border-bottom:1px solid lightgrey;' : ''
-      } text-align:center">
+  const tables = products.map((product, i) => {
+    return `<tr style="${
+      i === products.length - 1 ? 'border-bottom:1px solid lightgrey;' : ''
+    } text-align:center">
       <td style="padding: 10px;">
         <img src=${product.images[0]} width="50" />
       </td>
       <td style="padding: 0 25px 0 0;">${product.title}</td>
       <td style="padding: 0 15px;">${formatMoney(product.price)}</td>
     </tr>`
-  )
+  })
   return tables.toString().replace(',', '')
 }
 

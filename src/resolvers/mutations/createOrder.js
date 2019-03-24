@@ -81,7 +81,7 @@ module.exports = async (_, args, ctx, info) => {
   })
 
   // send text message to business owner with sale amount
-  await sendTextMessage(charge.amount)
+  // await sendTextMessage(charge.amount)
 
   // return the Order
   return order
