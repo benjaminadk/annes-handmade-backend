@@ -10,7 +10,3 @@ generate:
 
 seed:
   run: node database/index.js
-
-hooks:
-  post-deploy:
-    - prisma generate

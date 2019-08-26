@@ -9,12 +9,12 @@ const rl = readline.createInterface({
 
 // use readline to give user option to seed with csv file or google sheets api
 function getSeedOption() {
-  rl.question('Seed database with CSV file or from Sheets API? (csv/ss) ', choice => {
+  rl.question('Seed database with CSV file or from Sheets API? (csv/ss) ', async choice => {
     rl.close()
     if (choice === 'csv') {
-      withCSV()
+      await withCSV()
     } else if (choice === 'ss') {
-      withSheets()
+      await withSheets()
     } else {
       console.log('Enter one of the choices dum dum. "csv" or "ss" 😀')
     }

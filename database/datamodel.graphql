@@ -1,5 +1,5 @@
 type User {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   password: String
   email: String! @unique
@@ -10,32 +10,32 @@ type User {
   resetTokenExpiry: Float
   cart: [CartItem!]!
   orders: [Order]
-  createdAt: DateTime!
+  createdAt: DateTime! @createdAt
 }
 
 type Product {
-  id: ID! @unique
+  id: ID! @id
   variant: JewelryType!
   bead: BeadType!
   title: String!
   description: String!
-  images: [String!]!
+  images: [String!]! @scalarList(strategy: RELATION)
   price: Int!
-  sold: Boolean! @default(value: "false")
-  createdAt: DateTime!
+  sold: Boolean! @default(value: false)
+  createdAt: DateTime! @createdAt
 }
 
 type CartItem {
-  id: ID! @unique
+  id: ID! @id
   product: Product
   user: User!
 }
 
 type OrderItem {
-  id: ID! @unique
+  id: ID! @id
   title: String!
   description: String!
-  images: [String!]!
+  images: [String!]! @scalarList(strategy: RELATION)
   price: Int!
   variant: JewelryType!
   bead: BeadType!
@@ -43,19 +43,19 @@ type OrderItem {
 }
 
 type Order {
-  id: ID! @unique
+  id: ID! @id
   charge: String!
   total: Int!
   shipping: Address!
-  shipped: Boolean! @default(value: "false")
+  shipped: Boolean! @default(value: false)
   items: [OrderItem!]!
   user: User!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
 }
 
 type Address {
-  id: ID! @unique
+  id: ID! @id
   name: String!
   street: String!
   city: String!

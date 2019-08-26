@@ -1,8 +1,7 @@
-const isDev = process.env.NODE_ENV === 'development'
-
 // make link for homepage, order page or reset password page
 module.exports = (text, id, resetToken) => {
-  const rootUrl = isDev ? process.env.FRONTEND_DEV : process.env.FRONTEND_PROD
+  const rootUrl =
+    process.env.NODE_ENV === 'development' ? process.env.FRONTEND : 'http://anneshandmade.com'
   if (id) {
     return `<a href="${rootUrl}/order?id=${id}">${text}</a>`
   } else if (resetToken) {

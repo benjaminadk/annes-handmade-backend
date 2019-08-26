@@ -8,8 +8,6 @@ const resolvers = require('./resolvers')
 const addUserId = require('./middleware/addUserId')
 const addUser = require('./middleware/addUser')
 
-const { APOLLO_ENGINE_KEY, NODE_ENV, FRONTEND_DEV, FRONTEND_PROD, PORT } = process.env
-
 const server = new ApolloServer({
   typeDefs: importSchema('./src/schema.graphql'),
   resolvers,
@@ -20,7 +18,7 @@ const server = new ApolloServer({
     res
   }),
   engine: {
-    apiKey: APOLLO_ENGINE_KEY
+    apiKey: process.env.APOLLO_ENGINE_KEY
   },
   playground: true,
   introspection: true
@@ -30,7 +28,7 @@ const app = express()
 app.use('*', cookieParser(), addUserId, addUser)
 
 const cors = {
-  origin: NODE_ENV === 'production' ? FRONTEND_PROD : FRONTEND_DEV,
+  origin: process.env.FRONTEND,
   credentials: true
 }
 
@@ -41,4 +39,6 @@ server.applyMiddleware({
   cors
 })
 
-app.listen({ port: PORT }, () => console.log('server up @ port: %d env: %s', PORT, NODE_ENV))
+app.listen({ port: process.env.PORT }, () =>
+  console.log('server up @ port: %d env: %s', process.env.PORT, process.env.NODE_ENV)
+)

@@ -4,7 +4,6 @@
   "description": "Anne's Handmade e-commerce application.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo hello",
     "dev": "cross-env NODE_ENV=development nodemon -e js,graphql -x node --inspect src/index.js",
     "deploy": "prisma deploy -e .env",
     "reset": "prisma reset",
@@ -12,7 +11,14 @@
     "data": "npm run reset && npm run seed",
     "start": "nodemon -e js,graphql -x node src/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "stripe",
+    "ecommerce",
+    "javascript",
+    "graphql",
+    "apollo"
+  ],
   "author": {
     "name": "benjaminadk",
     "email": "benjaminadk@gmail.com",
@@ -21,10 +27,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/benjaminadk/annes-handmade-backend.git"
-  },
-  "engines": {
-    "node": "10.13.0",
-    "npm": "6.1.0"
   },
   "license": "ISC",
   "dependencies": {
@@ -45,7 +47,7 @@
     "nodemailer": "4.7.0",
     "nodemailer-sendgrid-transport": "0.2.0",
     "nodemon": "1.18.6",
-    "prisma-client-lib": "1.21.0",
+    "prisma-client-lib": "1.34.6",
     "stripe": "6.17.0",
     "twilio": "3.25.0"
   }
