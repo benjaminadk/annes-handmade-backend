@@ -9,4 +9,4 @@ generate:
     output: ../src/generated
 
 seed:
-  run: node database/index.js
+  run: node database/seed/index.js
