@@ -24,7 +24,7 @@ type Mutation {
   signout: Payload
   requestReset(email: String!): Payload
   resetPassword(resetToken: String!, password: String!, confirmPassword: String!, pwd: Int): User
-  updateUser(id: ID!, data: UserUpdateInput!): User
+  updateUser(id: ID!, email: String!, name: String!): User
   createProduct(data: ProductCreateInput!): Product
   updateProduct(id: ID!, data: ProductUpdateInput!): Product
   deleteProduct(id: ID!): Product
