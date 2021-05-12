@@ -40,7 +40,7 @@
     "graphql-resolvers": "0.2.2",
     "jsonwebtoken": "8.4.0",
     "mjml": "4.2.1",
-    "nodemailer": "4.7.0",
+    "nodemailer": "6.4.16",
     "nodemailer-sendgrid-transport": "0.2.0",
     "nodemon": "1.18.6",
     "prisma-client-lib": "1.34.6",
